@@ -1,0 +1,1 @@
+Place here only official product images that Centrakor authorizes you to use. Filenames should match catalog.json. Do not commit copyrighted images without permission.
