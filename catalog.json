@@ -1,0 +1,14 @@
+[
+  {"id":"taho-blanche","name":"Chaise TAHO coque blanche 46x54x85cm","price":24.99,"cat":"Mobilier","brand":"ATMOSPHERA","url":"https://www.centrakor.com/","image":"catalog-images/taho-blanche.jpg","styles":["Scandinave","Minimaliste","Contemporain"]},
+  {"id":"aliya","name":"Suspension ALIYA D 44x28cm","price":9.94,"cat":"Luminaire","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/aliya.jpg","styles":["Naturel","Scandinave","Minimaliste","Contemporain"]},
+  {"id":"mix-modul","name":"Meuble de rangement Mix'n Modul 6 cases bois blanc 67.5x100.5x32cm","price":44.99,"cat":"Rangement","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/mix-modul.jpg","styles":["Scandinave","Minimaliste","Contemporain"]},
+  {"id":"vase-gres","name":"Vase en grès blanc H 28.5cm","price":14.99,"cat":"Objet déco","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/vase-gres.jpg","styles":["Naturel","Scandinave","Minimaliste"]},
+  {"id":"abana","name":"Meuble TV ABANA 39x48x120cm","price":79.99,"cat":"Salon","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/abana.jpg","styles":["Contemporain","Industriel","Minimaliste"]},
+  {"id":"seram","name":"Fauteuil rotin Seram beige - ATMOSPHERA","price":149,"cat":"Salon","brand":"ATMOSPHERA","url":"https://www.centrakor.com/","image":"catalog-images/seram.jpg","styles":["Naturel","Scandinave","Contemporain"]},
+  {"id":"livia","name":"Miroir organique LIVIA bois 75x45cm","price":39.99,"cat":"Décoration murale","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/livia.jpg","styles":["Naturel","Scandinave","Contemporain"]},
+  {"id":"koby","name":"Lampe à poser KOBY naturel blanc H 24cm","price":11.99,"cat":"Luminaire","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/koby.jpg","styles":["Naturel","Scandinave","Minimaliste"]},
+  {"id":"tapis-jute","name":"Tapis rectangulaire jute naturel 160x230cm","price":99.99,"cat":"Tapis","brand":"ATMOSPHERA","url":"https://www.centrakor.com/","image":"catalog-images/tapis-jute.jpg","styles":["Naturel","Scandinave"]},
+  {"id":"twily","name":"Coussin TWILY poly coton sauge 30x50cm","price":8.10,"cat":"Textile","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/twily.jpg","styles":["Naturel","Scandinave","Contemporain"]},
+  {"id":"plaid-terracotta","name":"Plaid polyester flanelle terracotta 130x180cm","price":9.99,"cat":"Textile","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/plaid-terracotta.jpg","styles":["Naturel","Contemporain","Industriel"]},
+  {"id":"senecon","name":"Plante artificielle tombante SENECON H 75cm","price":3.99,"cat":"Objet déco","brand":"Centrakor","url":"https://www.centrakor.com/","image":"catalog-images/senecon.jpg","styles":["Naturel","Scandinave","Contemporain"]}
+]
