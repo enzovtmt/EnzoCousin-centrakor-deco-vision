@@ -1,0 +1,11 @@
+{
+  "name": "centrakor-deco-vision-hosted",
+  "version": "7.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "openai": "latest",
+    "busboy": "latest"
+  }
+}
