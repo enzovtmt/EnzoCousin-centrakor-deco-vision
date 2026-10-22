@@ -30,7 +30,8 @@ function parseMultipart(req){
 function json(res,status,data){res.statusCode=status;res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(data));}
 
 export default async function handler(req,res){
-  const url=new URL(req.url,\`https://\${req.headers.host||'localhost'}\`);
+
+  const url = new URL(req.url, `https://${req.headers.host || 'localhost'}`);
   if(req.method==='GET'&&url.pathname==='/api/health')return json(res,200,{ok:true,aiConfigured:Boolean(process.env.OPENAI_API_KEY),model:'gpt-image-2'});
   if(req.method!=='POST'||url.pathname!=='/api/generate')return json(res,404,{error:'Route introuvable.'});
   if(!process.env.OPENAI_API_KEY)return json(res,503,{error:'OPENAI_API_KEY n’est pas configurée sur le serveur.'});
