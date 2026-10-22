@@ -11,7 +11,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.parse import urlparse
-import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,10 +50,6 @@ def get_image_url(page_url):
         html = response.read().decode("utf-8", errors="replace")
     parser = MetaImageParser()
     parser.feed(html)
-    if not parser.image:
-        match = re.search(r'<meta[^>]+(?:property|name)=["\\'](?:og:image|twitter:image)["\\'][^>]+content=["\\']([^"\\']+)', html, re.I)
-        if match:
-            parser.image = match.group(1)
     if not parser.image:
         raise RuntimeError("aucune image principale (og:image) trouvée")
     return parser.image.replace("&amp;", "&")
