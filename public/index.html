@@ -1,84 +1,51 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Centrakor Déco Vision</title>
 <style>
-:root{--orange:#f36f21;--ink:#171717;--paper:#fff7f0;--line:#eaded5}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--paper)}
-header{background:var(--orange);color:#fff;padding:20px 6vw;display:flex;justify-content:space-between;gap:12px;font-weight:900}
-.wrap{max-width:1120px;margin:auto;padding:34px 20px 60px}.card{background:#fff;border-radius:18px;padding:clamp(20px,4vw,32px);box-shadow:0 8px 30px #0001}
-.eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--orange)}h1{font-size:clamp(32px,5vw,48px);line-height:1.05;margin:10px 0 12px}h2{margin-top:30px}p{line-height:1.55;color:#4e4e4e}
-.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}label{font-weight:700;font-size:13px;display:block;margin:16px 0 6px}
-select,input,button{width:100%;padding:13px;border-radius:10px;border:1px solid #ddd;font:inherit;background:#fff}button{background:var(--ink);color:#fff;font-weight:800;cursor:pointer;border:0;margin-top:18px}button:disabled{opacity:.6;cursor:wait}
-.note{font-size:13px;background:#fff3e8;border-radius:10px;padding:12px;margin-top:18px;color:#5e3b25}.preview img{width:100%;max-height:440px;object-fit:contain;background:#f4f0ed;border-radius:12px;margin-top:14px}
-.results{display:none}.summary{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}.product img{width:100%;height:190px;object-fit:contain;background:#fff;border-radius:8px}.product strong{line-height:1.35}.price{font-size:19px;font-weight:900;margin:0;color:var(--ink)}.product a{display:block;text-align:center;padding:10px;border-radius:8px;background:var(--orange);color:#fff;text-decoration:none;font-weight:800;margin-top:auto}.small{font-size:12px;color:#777}.error{color:#a00}.empty{padding:20px;background:#fff;border-radius:12px}
-@media(max-width:760px){.controls,.products{grid-template-columns:1fr 1fr}.product img{height:150px}}@media(max-width:500px){header{flex-direction:column}.controls,.products{grid-template-columns:1fr}.wrap{padding:20px 12px 40px}}
-</style>
-</head>
-<body>
-<header><span>centrakor</span><span>Déco Vision · Sélection déco gratuite</span></header>
+:root{--orange:#f36f21;--ink:#171717;--paper:#fff7f0;--line:#eaded5}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--paper);color:var(--ink)}header{background:var(--orange);color:#fff;padding:18px 6vw;display:flex;justify-content:space-between;gap:10px;font-weight:900}.wrap{max-width:1120px;margin:auto;padding:28px 18px 60px}.card{background:#fff;padding:clamp(18px,3vw,30px);border-radius:16px;box-shadow:0 8px 28px #0001;margin-bottom:18px}.eyebrow{color:var(--orange);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}h1{font-size:clamp(30px,4vw,44px);margin:10px 0}p{line-height:1.5;color:#555}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{display:block;font-weight:700;font-size:13px;margin:14px 0 6px}input,select,button{width:100%;padding:12px;border:1px solid #ddd;border-radius:9px;font:inherit;background:#fff}button{border:0;background:var(--ink);color:#fff;font-weight:800;cursor:pointer;margin-top:16px}button:disabled{opacity:.55}.note{font-size:13px;padding:12px;background:#fff2e7;border-radius:10px;margin-top:16px}.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.product{border:2px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:8px;background:white}.product.selected{border-color:var(--orange);box-shadow:0 0 0 2px #f36f2222}.product img{width:100%;height:150px;object-fit:contain}.product strong{font-size:14px;line-height:1.35}.price{font-weight:900;font-size:18px}.small{font-size:12px;color:#777}.workspace{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:18px;align-items:start}.canvas-wrap{background:#f0efec;border-radius:12px;overflow:hidden;min-height:200px;display:flex;align-items:center;justify-content:center}canvas{display:block;width:100%;height:auto;touch-action:none}#empty{padding:36px 16px;text-align:center;color:#777}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.secondary{background:#fff;color:var(--ink);border:1px solid #ddd}.error{color:#a00}.hidden{display:none}
+@media(max-width:700px){.controls,.workspace{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product img{height:120px}}@media(max-width:430px){.product-grid{grid-template-columns:1fr}header{flex-direction:column}}
+</style></head>
+<body><header><span>centrakor</span><span>Déco Vision · Essayage produit</span></header>
 <main class="wrap">
-<section class="card">
-<div class="eyebrow">Votre intérieur, votre style</div>
-<h1>Composez votre décoration avec Centrakor.</h1>
-<p>Ajoutez une photo de votre pièce, choisissez votre style et votre budget. Le site vous propose une sélection de vrais produits du catalogue avec leurs photos et leurs liens Centrakor.</p>
-<div class="controls">
-<div><label for="room">Pièce</label><select id="room"><option>Salon</option><option>Chambre</option><option>Salle à manger</option><option>Entrée</option><option>Bureau</option></select></div>
-<div><label for="style">Style</label><select id="style"><option>Contemporain</option><option>Scandinave</option><option>Naturel</option><option>Industriel</option><option>Minimaliste</option></select></div>
-<div><label for="budget">Budget total</label><select id="budget"><option value="100">100 €</option><option value="250">250 €</option><option value="500" selected>500 €</option><option value="1000">1 000 €</option><option value="1500">1 500 €</option><option value="2000">2 000 €</option></select></div>
-</div>
-<label for="photo">Photo de votre pièce (facultatif)</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp">
-<div id="preview" class="preview"></div>
-<button id="go" type="button">Créer ma sélection déco gratuite</button>
-<div class="note"><strong>Fonctionnement gratuit :</strong> cette version ne fait plus appel à l’API OpenAI et ne génère pas de fausse image « après ». Elle présente des produits référencés avec leurs photos, prix indicatifs et liens vers Centrakor. La disponibilité et les prix peuvent évoluer sur le site marchand.</div>
-</section>
-<section id="results" class="results">
-<h2>Votre sélection déco</h2>
-<p id="intro"></p>
-<div class="summary"><div><strong id="count">0 produit</strong><div class="small">Sélection indicative selon le style et le budget</div></div><div><span>Total estimé : </span><strong id="total">0,00 €</strong></div></div>
-<div id="products" class="products"></div>
-<p class="small">Les produits affichés sont des références de démonstration intégrées au projet. Vérifiez leur prix et leur disponibilité sur Centrakor avant achat.</p>
-</section>
+<section class="card"><div class="eyebrow">Visualisation produit</div><h1>Essayez un produit Centrakor chez vous.</h1><p>Choisissez une référence précise, importez la photo de la pièce du client, puis déplacez et redimensionnez le produit sur l’image. Cette version fonctionne dans le navigateur sans appel à une API payante.</p>
+<div class="controls"><div><label for="search">Rechercher un produit</label><input id="search" type="search" placeholder="Ex. fauteuil, lampe, TAHO…"></div><div><label for="category">Catégorie</label><select id="category"><option value="">Toutes les catégories</option></select></div></div>
+<div id="catalog" class="product-grid" style="margin-top:16px"></div>
+<div class="note">Sélectionnez un produit ci-dessus pour l’utiliser dans la simulation. Les prix sont indicatifs et doivent être vérifiés sur Centrakor. Le rendu est une maquette de placement, pas une génération photoréaliste par IA.</div></section>
+<section class="card"><h2>Photo du client</h2><label for="roomPhoto">Importer une photo (JPG, PNG ou WebP)</label><input id="roomPhoto" type="file" accept="image/jpeg,image/png,image/webp">
+<div class="workspace" style="margin-top:16px"><div><div class="canvas-wrap"><div id="empty">Importez une photo de pièce et sélectionnez un produit pour commencer.</div><canvas id="stage" class="hidden"></canvas></div><p class="small">Astuce : faites glisser le produit directement sur l’image pour ajuster son emplacement.</p></div>
+<div><label for="scale">Taille du produit</label><input id="scale" type="range" min="10" max="80" value="32"><div class="small">Déplacez le curseur pour agrandir ou réduire le produit.</div>
+<label for="xpos">Position horizontale</label><input id="xpos" type="range" min="0" max="100" value="50">
+<label for="ypos">Position verticale</label><input id="ypos" type="range" min="0" max="100" value="70">
+<div class="actions"><button id="reset" class="secondary" type="button">Réinitialiser</button><button id="download" type="button">Télécharger l’image</button></div>
+<div id="status" class="small" style="margin-top:10px"></div></div></div></section>
 </main>
 <script>
 const catalog = [
-{id:"taho-blanche",name:"Chaise TAHO coque blanche 46x54x85cm",price:24.99,cat:"Mobilier",brand:"ATMOSPHERA",url:"https://www.centrakor.com/chaise-coque-blanche-46x54x85cm-362567.html",image:"/catalog-images/taho-blanche.jpg",styles:["Scandinave","Minimaliste","Contemporain"]},
-{id:"aliya",name:"Suspension ALIYA D 44x28cm",price:9.94,cat:"Luminaire",brand:"Centrakor",url:"https://www.centrakor.com/suspension-aliya-d-44x28cm-400265.html",image:"/catalog-images/aliya.jpg",styles:["Naturel","Scandinave","Minimaliste","Contemporain"]},
-{id:"mix-modul",name:"Meuble de rangement Mix'n Modul 6 cases bois blanc",price:44.99,cat:"Rangement",brand:"Centrakor",url:"https://www.centrakor.com/etagere-cube-modulable-6-casiers-bois-blanche-67-5x100-5x32cm-341462.html",image:"/catalog-images/mix-modul.jpg",styles:["Scandinave","Minimaliste","Contemporain"]},
-{id:"vase-gres",name:"Vase en grès blanc H 28,5 cm",price:14.99,cat:"Objet déco",brand:"Centrakor",url:"https://www.centrakor.com/vase-en-gres-blanc-h-28-5cm-624838.html",image:"/catalog-images/vase-gres.jpg",styles:["Naturel","Scandinave","Minimaliste"]},
-{id:"abana",name:"Meuble TV ABANA 39x48x120cm",price:79.99,cat:"Salon",brand:"Centrakor",url:"https://www.centrakor.com/meuble-tv-abana-39x48x120cm-638072.html",image:"/catalog-images/abana.jpg",styles:["Contemporain","Industriel","Minimaliste"]},
-{id:"seram",name:"Fauteuil rotin Seram beige - ATMOSPHERA",price:149,cat:"Salon",brand:"ATMOSPHERA",url:"https://www.centrakor.com/fauteuil-rotin-seram-beige-atmosphera-373771.html",image:"/catalog-images/seram.jpg",styles:["Naturel","Scandinave","Contemporain"]},
-{id:"livia",name:"Miroir organique LIVIA bois 75x45cm",price:39.99,cat:"Décoration murale",brand:"Centrakor",url:"https://www.centrakor.com/miroir-organique-livia-bois-75x45cm-624721.html",image:"/catalog-images/livia.jpg",styles:["Naturel","Scandinave","Contemporain"]},
-{id:"koby",name:"Lampe à poser KOBY naturel blanc H 24cm",price:11.99,cat:"Luminaire",brand:"Centrakor",url:"https://www.centrakor.com/lampe-a-poser-koby-naturel-blanc-h-24cm-636492.html",image:"/catalog-images/koby.jpg",styles:["Naturel","Scandinave","Minimaliste"]},
-{id:"tapis-jute",name:"Tapis rectangulaire jute naturel 160x230cm",price:99.99,cat:"Tapis",brand:"ATMOSPHERA",url:"https://www.centrakor.com/tapis-rectangulaire-jute-naturel-160x230cm-384676.html",image:"/catalog-images/tapis-jute.jpg",styles:["Naturel","Scandinave"]},
-{id:"twily",name:"Coussin TWILY poly coton sauge 30x50cm",price:8.10,cat:"Textile",brand:"Centrakor",url:"https://www.centrakor.com/coussin-twily-poly-coton-sauge-30x50cm-636275.html",image:"/catalog-images/twily.jpg",styles:["Naturel","Scandinave","Contemporain"]},
-{id:"plaid-terracotta",name:"Plaid polyester flanelle terracotta 130x180cm",price:9.99,cat:"Textile",brand:"Centrakor",url:"https://www.centrakor.com/plaid-polyester-flanelle-terracotta-130x180cm-625604.html",image:"/catalog-images/plaid-terracotta.jpg",styles:["Naturel","Contemporain","Industriel"]},
-{id:"senecon",name:"Plante artificielle tombante SENECON H 75cm",price:3.99,cat:"Objet déco",brand:"Centrakor",url:"https://www.centrakor.com/plante-artificielle-tombante-senecon-h-75cm-618170.html",image:"/catalog-images/senecon.jpg",styles:["Naturel","Scandinave","Contemporain"]}
+{id:"taho-blanche",name:"Chaise TAHO coque blanche 46x54x85cm",price:24.99,cat:"Mobilier",brand:"ATMOSPHERA",url:"https://www.centrakor.com/chaise-coque-blanche-46x54x85cm-362567.html",image:"/catalog-images/taho-blanche.jpg"},
+{id:"aliya",name:"Suspension ALIYA D 44x28cm",price:9.94,cat:"Luminaire",brand:"Centrakor",url:"https://www.centrakor.com/suspension-aliya-d-44x28cm-400265.html",image:"/catalog-images/aliya.jpg"},
+{id:"mix-modul",name:"Meuble de rangement Mix'n Modul 6 cases blanc",price:44.99,cat:"Rangement",brand:"Centrakor",url:"https://www.centrakor.com/etagere-cube-modulable-6-casiers-bois-blanche-67-5x100-5x32cm-341462.html",image:"/catalog-images/mix-modul.jpg"},
+{id:"vase-gres",name:"Vase en grès blanc H 28,5 cm",price:14.99,cat:"Objet déco",brand:"Centrakor",url:"https://www.centrakor.com/vase-en-gres-blanc-h-28-5cm-624838.html",image:"/catalog-images/vase-gres.jpg"},
+{id:"abana",name:"Meuble TV ABANA",price:79.99,cat:"Salon",brand:"Centrakor",url:"https://www.centrakor.com/meuble-tv-abana-39x48x120cm-638072.html",image:"/catalog-images/abana.jpg"},
+{id:"seram",name:"Fauteuil rotin Seram beige - ATMOSPHERA",price:149,cat:"Salon",brand:"ATMOSPHERA",url:"https://www.centrakor.com/fauteuil-rotin-seram-beige-atmosphera-373771.html",image:"/catalog-images/seram.jpg"},
+{id:"livia",name:"Miroir organique LIVIA bois 75x45cm",price:39.99,cat:"Décoration murale",brand:"Centrakor",url:"https://www.centrakor.com/miroir-organique-livia-bois-75x45cm-624721.html",image:"/catalog-images/livia.jpg"},
+{id:"koby",name:"Lampe à poser KOBY naturel blanc H 24cm",price:11.99,cat:"Luminaire",brand:"Centrakor",url:"https://www.centrakor.com/lampe-a-poser-koby-naturel-blanc-h-24cm-636492.html",image:"/catalog-images/koby.jpg"},
+{id:"tapis-jute",name:"Tapis rectangulaire jute naturel 160x230cm",price:99.99,cat:"Tapis",brand:"ATMOSPHERA",url:"https://www.centrakor.com/tapis-rectangulaire-jute-naturel-160x230cm-384676.html",image:"/catalog-images/tapis-jute.jpg"},
+{id:"twily",name:"Coussin TWILY sauge 30x50cm",price:8.10,cat:"Textile",brand:"Centrakor",url:"https://www.centrakor.com/coussin-twily-poly-coton-sauge-30x50cm-636275.html",image:"/catalog-images/twily.jpg"},
+{id:"plaid-terracotta",name:"Plaid terracotta 130x180cm",price:9.99,cat:"Textile",brand:"Centrakor",url:"https://www.centrakor.com/plaid-polyester-flanelle-terracotta-130x180cm-625604.html",image:"/catalog-images/plaid-terracotta.jpg"},
+{id:"senecon",name:"Plante artificielle tombante SENECON H 75cm",price:3.99,cat:"Objet déco",brand:"Centrakor",url:"https://www.centrakor.com/plante-artificielle-tombante-senecon-h-75cm-618170.html",image:"/catalog-images/senecon.jpg"}
 ];
-const photo=document.getElementById('photo'),preview=document.getElementById('preview');
-let currentPhotoUrl=null;
-photo.addEventListener('change',()=>{preview.replaceChildren();const f=photo.files&&photo.files[0];if(!f)return;if(!/^image\/(jpeg|png|webp)$/.test(f.type)){preview.textContent='Choisissez une image JPG, PNG ou WebP.';return}if(currentPhotoUrl)URL.revokeObjectURL(currentPhotoUrl);currentPhotoUrl=URL.createObjectURL(f);const img=document.createElement('img');img.src=currentPhotoUrl;img.alt='Photo de votre pièce';preview.appendChild(img)});
-document.getElementById('go').addEventListener('click',()=>{
- const style=document.getElementById('style').value,budget=Number(document.getElementById('budget').value),room=document.getElementById('room').value;
- const candidates=catalog.filter(p=>p.styles.includes(style)).sort((a,b)=>a.price-b.price);
- const selected=[];let total=0;
- for(const p of candidates){if(total+p.price<=budget){selected.push(p);total+=p.price}if(selected.length>=8)break}
- const products=document.getElementById('products');products.replaceChildren();
- if(!selected.length){products.innerHTML='<div class="empty">Aucun produit ne rentre dans ce budget pour ce style. Augmentez le budget pour voir plus de références.</div>'}
- selected.forEach(p=>{
-  const card=document.createElement('article');card.className='product';
-  const img=document.createElement('img');img.src=p.image;img.alt=p.name;img.loading='lazy';img.onerror=()=>{img.alt='Photo produit indisponible';img.style.display='none'};
-  const category=document.createElement('div');category.className='small';category.textContent=p.cat+' · '+p.brand;
-  const name=document.createElement('strong');name.textContent=p.name;
-  const price=document.createElement('p');price.className='price';price.textContent=p.price.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
-  const link=document.createElement('a');link.href=p.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Voir sur Centrakor';
-  card.append(img,category,name,price,link);products.appendChild(card);
- });
- document.getElementById('intro').textContent='Pour votre '+room.toLowerCase()+', style '+style.toLowerCase()+', voici une sélection de produits dont le total reste dans votre budget.';
- document.getElementById('count').textContent=selected.length+' produit'+(selected.length>1?'s':'');
- document.getElementById('total').textContent=total.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
- document.getElementById('results').style.display='block';document.getElementById('results').scrollIntoView({behavior:'smooth'});
-});
-</script>
-</body></html>
+const catalogEl=document.getElementById('catalog'),searchEl=document.getElementById('search'),categoryEl=document.getElementById('category'),photoEl=document.getElementById('roomPhoto'),canvas=document.getElementById('stage'),ctx=canvas.getContext('2d'),empty=document.getElementById('empty'),status=document.getElementById('status');
+let selected=null,productImg=null,roomImg=null,roomFileUrl=null,productPixels=null,dragging=false,dragOffset={x:0,y:0},pos={x:.5,y:.7},scale=.32,roomDraw={x:0,y:0,w:0,h:0};
+[...new Set(catalog.map(p=>p.cat))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;categoryEl.appendChild(o)});
+function renderCatalog(){catalogEl.replaceChildren();const q=searchEl.value.trim().toLowerCase(),cat=categoryEl.value;catalog.filter(p=>(!q||(p.name+' '+p.cat+' '+p.brand+' '+p.id).toLowerCase().includes(q))&&(!cat||p.cat===cat)).forEach(p=>{const card=document.createElement('article');card.className='product'+(selected&&selected.id===p.id?' selected':'');card.tabIndex=0;const img=document.createElement('img');img.src=p.image;img.alt=p.name;img.onerror=()=>{img.style.display='none'};const catEl=document.createElement('div');catEl.className='small';catEl.textContent=p.cat+' · '+p.brand;const name=document.createElement('strong');name.textContent=p.name;const price=document.createElement('div');price.className='price';price.textContent=p.price.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});const link=document.createElement('a');link.href=p.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Voir sur Centrakor';link.style.cssText='font-size:12px;color:#a7430b';link.addEventListener('click',e=>e.stopPropagation());card.append(img,catEl,name,price,link);card.addEventListener('click',()=>chooseProduct(p));card.addEventListener('keydown',e=>{if(e.key==='Enter')chooseProduct(p)});catalogEl.appendChild(card)})}
+function chooseProduct(p){selected=p;productImg=new Image();productImg.crossOrigin='anonymous';productImg.onload=()=>{prepareProduct();renderCatalog();draw();status.textContent='Produit sélectionné : '+p.name};productImg.onerror=()=>{status.textContent='La photo de ce produit est indisponible. Vérifiez les fichiers du catalogue.';renderCatalog()};productImg.src=p.image;pos={x:.5,y:.7};scale=.32;document.getElementById('scale').value=32;document.getElementById('xpos').value=50;document.getElementById('ypos').value=70}
+function prepareProduct(){const c=document.createElement('canvas');c.width=productImg.naturalWidth;c.height=productImg.naturalHeight;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(productImg,0,0);try{const im=x.getImageData(0,0,c.width,c.height),d=im.data;for(let i=0;i<d.length;i+=4){const min=Math.min(d[i],d[i+1],d[i+2]),max=Math.max(d[i],d[i+1],d[i+2]);if(min>242&&max-min<13)d[i+3]=0;else if(min>220&&max-min<18)d[i+3]=Math.min(d[i+3],Math.round((242-min)/22*255))}x.putImageData(im,0,0);productPixels=c}catch(e){productPixels=null}productImg=c}
+function draw(){if(!roomImg)return;const maxW=1200,ratio=Math.min(1,maxW/roomImg.naturalWidth);canvas.width=Math.round(roomImg.naturalWidth*ratio);canvas.height=Math.round(roomImg.naturalHeight*ratio);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(roomImg,0,0,canvas.width,canvas.height);roomDraw={x:0,y:0,w:canvas.width,h:canvas.height};if(selected&&productImg){const w=canvas.width*scale,h=w*(productImg.height/productImg.width),x=pos.x*canvas.width-w/2,y=pos.y*canvas.height-h/2;ctx.drawImage(productImg,x,y,w,h)}canvas.classList.remove('hidden');empty.classList.add('hidden')}
+photoEl.addEventListener('change',()=>{const f=photoEl.files&&photoEl.files[0];if(!f)return;if(roomFileUrl)URL.revokeObjectURL(roomFileUrl);roomFileUrl=URL.createObjectURL(f);roomImg=new Image();roomImg.onload=()=>{draw();status.textContent='Photo chargée. Sélectionnez un produit puis ajustez sa taille et sa position.'};roomImg.src=roomFileUrl});
+document.getElementById('scale').addEventListener('input',e=>{scale=Number(e.target.value)/100;draw()});document.getElementById('xpos').addEventListener('input',e=>{pos.x=Number(e.target.value)/100;draw()});document.getElementById('ypos').addEventListener('input',e=>{pos.y=Number(e.target.value)/100;draw()});
+function point(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*canvas.width,y:(e.clientY-r.top)/r.height*canvas.height}}
+canvas.addEventListener('pointerdown',e=>{if(!selected||!roomImg)return;dragging=true;canvas.setPointerCapture(e.pointerId);const p=point(e);dragOffset={x:p.x-pos.x*canvas.width,y:p.y-pos.y*canvas.height}});canvas.addEventListener('pointermove',e=>{if(!dragging)return;const p=point(e);pos.x=Math.max(0,Math.min(1,(p.x-dragOffset.x)/canvas.width));pos.y=Math.max(0,Math.min(1,(p.y-dragOffset.y)/canvas.height));document.getElementById('xpos').value=Math.round(pos.x*100);document.getElementById('ypos').value=Math.round(pos.y*100);draw()});canvas.addEventListener('pointerup',()=>dragging=false);canvas.addEventListener('pointercancel',()=>dragging=false);
+document.getElementById('reset').addEventListener('click',()=>{pos={x:.5,y:.7};scale=.32;document.getElementById('scale').value=32;document.getElementById('xpos').value=50;document.getElementById('ypos').value=70;draw()});
+document.getElementById('download').addEventListener('click',()=>{if(!roomImg||!selected){status.textContent='Importez une photo et choisissez un produit avant de télécharger.';return}const a=document.createElement('a');a.download='centrakor-visualisation-'+selected.id+'.png';a.href=canvas.toDataURL('image/png');a.click()});
+searchEl.addEventListener('input',renderCatalog);categoryEl.addEventListener('change',renderCatalog);renderCatalog();
+</script></body></html>
