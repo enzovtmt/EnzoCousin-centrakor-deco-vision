@@ -2,6 +2,10 @@ name: Download catalog product images
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/download_catalog_images.py'
+      - '.github/workflows/download-catalog-images.yml'
 
 permissions:
   contents: write
